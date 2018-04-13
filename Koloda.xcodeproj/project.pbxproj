@@ -15,7 +15,22 @@
 		C517E4F21D9D00520002D88F /* KolodaViewAnimatior.swift in Sources */ = {isa = PBXBuildFile; fileRef = C517E4E81D9D00520002D88F /* KolodaViewAnimatior.swift */; };
 		C517E4F31D9D00520002D88F /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C517E4EA1D9D00520002D88F /* OverlayView.swift */; };
 		C517E4F41D9D00520002D88F /* SwipeResultDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C517E4EB1D9D00520002D88F /* SwipeResultDirection.swift */; };
+		C531A68C2081287F007CD375 /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C517E4F81D9D01920002D88F /* pop.framework */; };
+		C531A690208128D6007CD375 /* pop.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C517E4F81D9D01920002D88F /* pop.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C531A68E2081288A007CD375 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C531A690208128D6007CD375 /* pop.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		84F820B51E4D31BC0088562A /* KolodaAnimationSemaphore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KolodaAnimationSemaphore.swift; sourceTree = "<group>"; };
@@ -36,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C531A68C2081287F007CD375 /* pop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +160,8 @@
 				C517E4A61D9CF9010002D88F /* Sources */,
 				C517E4A71D9CF9010002D88F /* Frameworks */,
 				C517E4A81D9CF9010002D88F /* Headers */,
-				C517E4A91D9CF9010002D88F /* Resources */,
+				C531A68E2081288A007CD375 /* CopyFiles */,
+				C531A68F20812892007CD375 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -166,6 +183,7 @@
 				TargetAttributes = {
 					C517E4AA1D9CF9010002D88F = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 9FJQDJQRDP;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -187,15 +205,22 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		C517E4A91D9CF9010002D88F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* Begin PBXShellScriptBuildPhase section */
+		C531A68F20812892007CD375 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/pop.framework",
+			);
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
-/* End PBXResourcesBuildPhase section */
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C517E4A61D9CF9010002D88F /* Sources */ = {
@@ -317,8 +342,9 @@
 		C517E4B41D9CF9010002D88F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9FJQDJQRDP;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -341,6 +367,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9FJQDJQRDP;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
