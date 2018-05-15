@@ -419,10 +419,17 @@ public class DraggableCardView: UIView, UIGestureRecognizerDelegate {
         if !dragBegin {
             delegate?.card(self, wasSwipedIn: direction)
             
+            overlayView?.overlayState = direction
+            let overlayAlphaAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+            overlayAlphaAnimation?.toValue = 1.0
+            overlayAlphaAnimation?.duration = 0.2// cardSwipeActionAnimationDuration
+            overlayView?.pop_add(overlayAlphaAnimation, forKey: "swipeOverlayAnimation")
+            
             let swipePositionAnimation = POPBasicAnimation(propertyNamed: kPOPLayerTranslationXY)
             swipePositionAnimation?.fromValue = NSValue(cgPoint:POPLayerGetTranslationXY(layer))
             swipePositionAnimation?.toValue = NSValue(cgPoint:animationPointForDirection(direction))
             swipePositionAnimation?.duration = cardSwipeActionAnimationDuration
+            swipePositionAnimation?.beginTime = CACurrentMediaTime() + 0.2
             swipePositionAnimation?.completionBlock = {
                 (_, _) in
                 self.removeFromSuperview()
@@ -435,14 +442,11 @@ public class DraggableCardView: UIView, UIGestureRecognizerDelegate {
             swipeRotationAnimation?.fromValue = POPLayerGetRotationZ(layer)
             swipeRotationAnimation?.toValue = CGFloat(animationRotationForDirection(direction))
             swipeRotationAnimation?.duration = cardSwipeActionAnimationDuration
+            swipeRotationAnimation?.beginTime = CACurrentMediaTime() + 0.2
             
             layer.pop_add(swipeRotationAnimation, forKey: "swipeRotationAnimation")
             
-            overlayView?.overlayState = direction
-            let overlayAlphaAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
-            overlayAlphaAnimation?.toValue = 1.0
-            overlayAlphaAnimation?.duration = cardSwipeActionAnimationDuration
-            overlayView?.pop_add(overlayAlphaAnimation, forKey: "swipeOverlayAnimation")
+           
         }
     }
 }
